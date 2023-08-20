@@ -1,33 +1,63 @@
 import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
-  mutation loginUser($userData: LoginInput!) {
-    loginUser(userData: $userData) {
-      // fields you want to retrieve after logging in
+  mutation Login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
     }
   }
 `;
 
 export const CREATE_USER = gql`
-  mutation createUser($userData: UserType!) {
-    createUser(userData: $userData) {
-      // fields you want to retrieve after creating, e.g., id, name, etc.
+  mutation AddUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
     }
   }
 `;
 
 export const SAVE_BOOK = gql`
-  mutation saveBook($bookData: BookInput!) {
-    saveBook(bookData: $bookData) {
-      // fields you want to retrieve after saving the book.
+  mutation SaveBook($input: SaveBookInput!) {
+    saveBook(input: $input) {
+      _id
+      username
+      email
+      bookCount
+      savedBooks {
+        bookId
+        authors
+        description
+        title
+        image
+        link
+      }
     }
   }
 `;
 
-export const DELETE_BOOK = gql`
-  mutation deleteBook($bookId: ID!) {
-    deleteBook(bookId: $bookId) {
-      // fields you want to retrieve after deleting the book.
+export const REMOVE_BOOK = gql`
+  mutation RemoveBook($bookId: ID!) {
+    removeBook(bookId: $bookId) {
+      _id
+      username
+      email
+      bookCount
+      savedBooks {
+        bookId
+        authors
+        description
+        title
+        image
+        link
+      }
     }
   }
 `;

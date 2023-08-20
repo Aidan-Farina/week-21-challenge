@@ -16,6 +16,9 @@ module.exports = {
     }
 
     if (!token) {
+      if (req.path === '/graphql') {
+        return next();
+      }
       return res.status(400).json({ message: 'You have no token!' });
     }
 
@@ -25,6 +28,9 @@ module.exports = {
       req.user = data;
     } catch {
       console.log('Invalid token');
+      if (req.path === '/graphql') {
+        return next();
+      }
       return res.status(400).json({ message: 'invalid token!' });
     }
 

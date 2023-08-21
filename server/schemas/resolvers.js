@@ -50,7 +50,7 @@ const resolvers = {
           { $pull: { savedBooks: { bookId } } },
           { new: true }
         ).populate('savedBooks');
-        return updatedUser;
+        return updatedUser; 
       }
       throw new Error('You need to be logged in!');
     }

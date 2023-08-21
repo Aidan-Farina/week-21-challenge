@@ -23,11 +23,11 @@ type Auth {
 
 input SaveBookInput {
   authors: [String]!
-  description: String!
-  title: String!
+  description: String
+  title: String
   bookId: ID!
   image: String
-  link: String!
+  link: String
 }
 
 type Mutation {

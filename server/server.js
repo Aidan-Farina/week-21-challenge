@@ -35,6 +35,10 @@ const startApolloServer = async () => {
       res.sendFile(path.join(__dirname, '../client/build/index.html'));
     });
   } 
+  app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+  });
 
   db.once('open', () => {
     app.listen(PORT, () => {

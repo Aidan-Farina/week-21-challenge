@@ -5,7 +5,6 @@
   "main": "server.js",
   "scripts": {
     "start": "node server/server.js",
-    "postbuild": "cd client && npm install && npm run build",
     "watch": "nodemon server.js"
   },
   "keywords": [],
